@@ -9,3 +9,12 @@ CREATE TABLE `flask_tutorial`.`user` (
   `password` VARCHAR(45) NULL,
   PRIMARY KEY (`id`));
 
+
+CREATE TABLE user (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(45)  NULL ,
+  email VARCHAR(45)  NULL ,
+  phone VARCHAR(45) NULL,
+  role VARCHAR(45)  NULL ,
+  password VARCHAR(45)  NULL 
+  );
