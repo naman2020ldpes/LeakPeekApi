@@ -1,15 +1,5 @@
-CREATE SCHEMA `flask_tutorial` ;
-
-CREATE TABLE `flask_tutorial`.`user` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NULL,
-  `email` VARCHAR(45) NULL,
-  `phone` VARCHAR(45) NULL,
-  `role` VARCHAR(45) NULL,
-  `password` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`));
-
-
+data base setup
+CREATE SCHEMA flask_tutorial ;
 CREATE TABLE user (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(45)  NULL ,
@@ -18,3 +8,26 @@ CREATE TABLE user (
   role VARCHAR(45)  NULL ,
   password VARCHAR(45)  NULL 
   );
+SELECT * FROM user;
+
+
+In VS Code 
+go to model -> login_model - > in code :
+Find the "__init__" function there, you will find 
+"self.conn= mysql.connector.connect(host="localhost",user="root",password="root",database="flask_tutorial")"
+Change the username and password 
+
+This is for me ,   
+pip freeze > requirements.txt
+
+to download all dependencies for you guys,
+pip install -r requirements.txt
+
+Run this every time 
+.\Scripts\activate      to go into that virtual environment and work 
+Or tell VS Code yes to work in a the virtual environment
+to start the app  (copy each line and paste it one by one)
+$env:FLASK_APP="app";$env:FLASK_ENV="development";$env:PYTHONDONTWRITEBYTECODE=1  
+flask run --debug
+
+
