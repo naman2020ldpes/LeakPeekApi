@@ -44,10 +44,10 @@ class login_model_class():
         #print(result)
         try:
             if len(result)>0 :
-                return jsonify({"message":"loign successful","status":200})
+                return jsonify({"message":"loign successful","status":200,"page":"home"})
             else: 
                 return jsonify({"message":"invalid email or password","status":401})
-            # json.dumps() function will convert a subset of Python objects into a json string. 
+            # json.dumps() function will convert a subset of Python objects into a json string;. 
         except mysql.connector.Error as e :
             print("error:",e)
             return jsonify({"message": str(e), "status": 400})
@@ -64,16 +64,16 @@ class login_model_class():
             return jsonify({"message": f"Missing or empty fields: {', '.join(missing_fields)}","status":400})
         # to print specific value 
         #print('\n'+ data['name']) 
-        #fstr = f"values('{data['name']}','{data['email']}','{data['phone']}','{data['role']}','{data['password']}');"
+        #fstr = f"values('{data['name']}','{data['email']}','{dat021a=['phone']}','{data['role']}','{data['password']}');"
         #self.cor.execute(f"insert into flask_tutorial.user (name,email,phone,role,password) {fstr}")
         #result=self.cor.fetchall()   # to exicute it 
         #print(result)
         try:
-            inputs_qry="insert into flask_tutorial.user (name,email,phone,role,password) values(%s,%s, %s,%s, %s)"
+            inputs_qry="insert into user (name,email,phone,role,password) values(%s,%s, %s,%s, %s)"
             val=(data['name'],data['email'],data['phone'],data['role'],data['password'])
             self.cor.execute(inputs_qry,val) # to exicute it 
             if self.cor.rowcount > 0:
-                return {"message": "created success", "status": 201}
+                return {"message": "created success", "status": 201,"page":"home"}
             else:
                 return {"message": "error while creating user", "status": 500}
         except mysql.connector.Error as e :
