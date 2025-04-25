@@ -73,15 +73,15 @@ class login_model_class():
             val=(data['name'],data['email'],data['phone'],data['role'],data['password'])
             self.cor.execute(inputs_qry,val) # to exicute it 
             if self.cor.rowcount > 0:
-                return {"message": "created success", "status": 201,"page":"home"}
+                return jsonify({"message": "created success", "status": 201,"page":"home"})
             else:
-                return {"message": "error while creating user", "status": 500}
+                return jsonify({"message": "error while creating user", "status": 500})
         except mysql.connector.Error as e :
             print("error:",e)
-            return {"message": str(e), "status": 400}
+            return jsonify({"message": str(e), "status": 400})
         except Exception  as e :
             print("error:",e)
-            return {"message": "this is other error :  "+ str(e), "status": 500}
+            return jsonify({"message": "this is other error :  "+ str(e), "status": 500})
         
             
     
