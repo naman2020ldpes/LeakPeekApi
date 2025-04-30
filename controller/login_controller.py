@@ -3,6 +3,8 @@ from app import app
 # we have to import model 
 from model.login_model import login_model_class
 
+#from email 
+from model.email_varify_model import emailVarify as demo
 from flask import request
 
 obj = login_model_class()
@@ -23,3 +25,20 @@ def user_register_model():
     #print(request.form)   # allows to take data from user in other format
     request_data = request.get_json()
     return obj2.user_register_model(request_data)
+
+@app.route("/user/email",methods=["POST","GET"])
+def user_email_model():
+    #print(request.form)   # allows to take data from user in other format
+    request_data = request.get_json()
+    print(request_data)
+    email =request_data["email"]
+    action =request_data["action"]
+    
+# Check if the "code" key exists in the request data
+    if "code" in request_data:
+        code = request_data["code"]
+        # Call the demo function with email, action, and code
+        return demo(email, action, code)
+    else:
+        # Call the demo function with only email and action
+        return demo(email, action)
